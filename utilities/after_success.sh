@@ -10,6 +10,7 @@ if [ "${TRAVIS_JDK_VERSION}" == "oraclejdk7" -a "${TRAVIS_BRANCH}" == "master" -
     git config --global user.email "Travis CI"
     git config --global user.name "ajay.kannan.15@dartmouth.edu"
     git clone -b gh-pages https://${CI_DEPLOY_USERNAME}:${CI_DEPLOY_PASSWORD}@github.com/testuser-aj/temptest.git
+    git remote set-url origin git@github.com:${CI_DEPLOY_USERNAME}/temptest.git
     SITE_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version | grep -Ev '(^\[|Download\w+:)')
     SITE_VERSION="$(cut -d '-' -f 1 <<< "$SITE_VERSION")"
     mkdir -p site/latest/
