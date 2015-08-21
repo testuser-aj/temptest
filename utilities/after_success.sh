@@ -12,14 +12,14 @@ if [ "${TRAVIS_JDK_VERSION}" == "oraclejdk7" -a "${TRAVIS_BRANCH}" == "master" -
     SITE_VERSION="$(cut -d '-' -f 1 <<< "$SITE_VERSION")"
     mkdir -p site/latest/
     touch site/latest/index.html
-    site/latest/index.html < "<html><head><meta http-equiv=\"refresh\" content=\"0; URL='http://googlecloudplatform.github.io/gcloud-java/site/$SITE_VERSION />'\"</head><body></body></html>"
+    echo "<html><head><meta http-equiv=\"refresh\" content=\"0; URL='http://googlecloudplatform.github.io/gcloud-java/site/$SITE_VERSION />'\"</head><body></body></html>" > site/latest/index.html
     git add site/latest/index.html
     git commit -m "Updating latest website version"
     git push origin gh-pages
 
-    mvn cobertura:cobertura coveralls:report
-    mvn site-deploy -DskipTests=true --settings=target/travis/settings.xml
-    mvn deploy -DskipTests=true -Dgpg.skip=true --settings target/travis/settings.xml
+    #mvn cobertura:cobertura coveralls:report
+    #mvn site-deploy -DskipTests=true --settings=target/travis/settings.xml
+    #mvn deploy -DskipTests=true -Dgpg.skip=true --settings target/travis/settings.xml
 else
     echo "Not deploying artifacts. This is only done with non-pull-request commits to master branch with Oracle Java 7 builds."
 fi
