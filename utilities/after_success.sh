@@ -13,8 +13,8 @@ if [ "${TRAVIS_JDK_VERSION}" == "oraclejdk7" -a "${TRAVIS_BRANCH}" == "master" -
     # Create/update "latest" html page to redirect to the most recently generated website
     git config --global user.name "Travis CI"
     git config --global user.email ${CI_DEPLOY_USERNAME}@github.com
-    git clone https://github.com/testuser-aj/temptest.git
-    cd temptest
+    git clone https://github.com/testuser-aj/temptest.git #######################################
+    cd temptest #################################################################################
     SITE_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version | grep -Ev '(^\[|Download\w+:)')
     SITE_VERSION=${SITE_VERSION%-*} # Strip "-SNAPSHOT" out of version as necessary
     git checkout gh-pages
@@ -25,7 +25,8 @@ if [ "${TRAVIS_JDK_VERSION}" == "oraclejdk7" -a "${TRAVIS_BRANCH}" == "master" -
     sed -i "s/SITE_VERSION/$SITE_VERSION/g" site/${SITE_VERSION}/index.html
     git add site/${SITE_VERSION}/index.html
     git commit -m "Updating to reflect latest website version"
-    git push --force "https://${CI_DEPLOY_USERNAME}:${CI_DEPLOY_PASSWORD}@github.com/testuser-aj/temptest.git" #origin gh-pages
+    git config --global push.default simple
+    git push --force "https://${CI_DEPLOY_USERNAME}:${CI_DEPLOY_PASSWORD}@github.com/testuser-aj/temptest.git"
 
     #mvn deploy -DskipTests=true -Dgpg.skip=true --settings target/travis/settings.xml
 else
