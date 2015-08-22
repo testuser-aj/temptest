@@ -17,6 +17,7 @@ if [ "${TRAVIS_JDK_VERSION}" == "oraclejdk7" -a "${TRAVIS_BRANCH}" == "master" -
     cd temptest #################################################################################
     SITE_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version | grep -Ev '(^\[|Download\w+:)')
     SITE_VERSION=${SITE_VERSION%-*} # Strip "-SNAPSHOT" out of version as necessary
+    SITE_VERSION=0.0.6 ###########################################################################
     git checkout gh-pages
     mkdir -p site/latest/
     touch site/latest/index.html
