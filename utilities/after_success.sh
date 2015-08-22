@@ -19,7 +19,7 @@ if [ "${TRAVIS_JDK_VERSION}" == "oraclejdk7" -a "${TRAVIS_BRANCH}" == "master" -
     SITE_VERSION=0.0.6
     mkdir -p site/latest/
     touch site/latest/index.html
-    echo "<html><head><meta http-equiv=\"refresh\" content=\"0; URL='http://googlecloudplatform.github.io/gcloud-java/site/$SITE_VERSION />'\"</head><body></body></html>" > site/latest/index.html
+    echo "<html><head><meta http-equiv=\"refresh\" content=\"0; URL='http://googlecloudplatform.github.io/gcloud-java/site/${SITE_VERSION}/index.html'\" /></head><body></body></html>" > site/latest/index.html
     git add site/latest/index.html
     git commit -m "Updating latest website version"
     git push --force --quiet "https://${GH_TOKEN}@github.com/testuser-aj/temptest.git" origin/gh-pages
