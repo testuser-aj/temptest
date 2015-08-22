@@ -24,7 +24,7 @@ if [ "${TRAVIS_JDK_VERSION}" == "oraclejdk7" -a "${TRAVIS_BRANCH}" == "master" -
     echo "<html><head><meta http-equiv=\"refresh\" content=\"0; URL='http://googlecloudplatform.github.io/gcloud-java/site/$SITE_VERSION />'\"</head><body></body></html>" > site/latest/index.html
     git add site/latest/index.html
     git commit -m "Updating latest website version"
-    git push --force --quiet https://${GH_TOKEN}@github.com/testuser-aj/temptest.git" origin gh-pages
+    git push --force --quiet "https://${GH_TOKEN}@github.com/testuser-aj/temptest.git" origin gh-pages
 
     #mvn cobertura:cobertura coveralls:report
     #mvn site-deploy -DskipTests=true --settings=target/travis/settings.xml
