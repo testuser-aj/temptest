@@ -11,8 +11,8 @@ if [ "${TRAVIS_JDK_VERSION}" == "oraclejdk7" -a "${TRAVIS_BRANCH}" == "master" -
     #mvn site-deploy -DskipTests=true --settings=target/travis/settings.xml
     
     # Create/update "latest" html page to redirect to the most recently generated website
-    #git config --global user.email ""
     git config --global user.name "Travis CI"
+    git config --global user.email ${CI_DEPLOY_USERNAME}@github.com
     git clone https://github.com/testuser-aj/temptest.git
     cd temptest
     echo $(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version | grep -Ev '(^\[|Download\w+:)')
