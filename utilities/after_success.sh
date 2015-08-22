@@ -25,7 +25,7 @@ if [ "${TRAVIS_JDK_VERSION}" == "oraclejdk7" -a "${TRAVIS_BRANCH}" == "master" -
     sed -i "s/SITE_VERSION/$SITE_VERSION/g" site/${SITE_VERSION}/index.html
     git add site/${SITE_VERSION}/index.html
     git commit -m "Updating to reflect latest website version"
-    git push --force "https://${CI_DEPLOY_USERNAME}:${CI_DEPLOY_PASSWORD}@github.com/testuser-aj/temptest.git" origin gh-pages
+    git push --force "https://${CI_DEPLOY_USERNAME}:${CI_DEPLOY_PASSWORD}@github.com/testuser-aj/temptest.git" #origin gh-pages
 
     #mvn deploy -DskipTests=true -Dgpg.skip=true --settings target/travis/settings.xml
 else
