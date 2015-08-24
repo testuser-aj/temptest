@@ -7,7 +7,7 @@ echo "Travis branch:       " ${TRAVIS_BRANCH}
 echo "Travis pull request: " ${TRAVIS_PULL_REQUEST}
 echo "Travis JDK version:  " ${TRAVIS_JDK_VERSION}
 if [ "${TRAVIS_JDK_VERSION}" == "oraclejdk7" -a "${TRAVIS_BRANCH}" == "master" -a "${TRAVIS_PULL_REQUEST}" == "false" ]; then
-    mvn cobertura:cobertura coveralls:report
+    #mvn cobertura:cobertura coveralls:report
     #mvn deploy -DskipTests=true -Dgpg.skip=true --settings target/travis/settings.xml
 
     # Deploy site if not a SNAPSHOT
